@@ -1,6 +1,6 @@
 import MotionCard from '../MotionCard'
 import SectionHeading from '../SectionHeading'
-import { contributionWeeks, githubStats, profile } from '../../data/portfolio'
+import { contributionWeeks, githubStats, profile, topLanguages } from '../../data/portfolio'
 
 const contributionColors = [
   'bg-slate-800',
@@ -35,8 +35,30 @@ export default function GithubStats() {
               rel="noreferrer"
               className="mt-6 inline-flex rounded-full border border-cyan-300/30 px-5 py-3 text-sm font-black text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/10"
             >
-              View GitHub
+              GitHub Profile Button
             </a>
+
+            <div className="mt-8">
+              <p className="text-sm font-black uppercase tracking-[0.2em] text-cyan-300">
+                Top Languages
+              </p>
+              <div className="mt-4 grid gap-3">
+                {topLanguages.map((language) => (
+                  <div key={language.name}>
+                    <div className="mb-1 flex justify-between text-xs font-bold text-slate-300">
+                      <span>{language.name}</span>
+                      <span>{language.value}%</span>
+                    </div>
+                    <div className="h-2 overflow-hidden rounded-full bg-slate-800">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-300 to-violet-400"
+                        style={{ width: `${language.value}%` }}
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </MotionCard>
           <MotionCard className="rounded-3xl border border-white/10 bg-slate-900/70 p-6">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -63,7 +85,7 @@ export default function GithubStats() {
               </div>
             </div>
 
-            <div className="mt-7 grid gap-4 sm:grid-cols-3">
+            <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {githubStats.map((stat) => (
                 <div
                   key={stat.label}

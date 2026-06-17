@@ -16,9 +16,8 @@ export const navItems = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Education', href: '#education' },
-  { label: 'Achievements', href: '#achievements' },
-  { label: 'Certifications', href: '#certifications' },
+  { label: 'Services', href: '#services' },
+  { label: 'Resume', href: '#resume' },
   { label: 'GitHub', href: '#github' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -41,19 +40,89 @@ export const skills = [
 export const projects = [
   {
     title: 'OpenHouse Connect',
+    role: 'Full Stack Developer',
+    overview:
+      'OpenHouse Connect is a university open house platform built to connect companies with students through AI-assisted CV matching.',
+    problem:
+      'Companies visiting university open houses need a faster way to identify students whose skills match their technology requirements.',
+    solution:
+      'The platform lets companies manage opportunities, students submit CV data, and an AI matching feature generates compatibility scores for shortlisting.',
     description:
       'AI-powered university open house platform built with MERN Stack. Matches student CVs with company requirements and generates compatibility scores.',
     technologies: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind CSS'],
     highlight: 'AI CV Matching',
-    metrics: ['92% match score demo', 'Role-based auth', 'AI-powered shortlist'],
+    metrics: [
+      'Role: Full Stack Developer',
+      'Authentication System',
+      'Company Dashboard',
+      'Student Dashboard',
+      'Job Management',
+      'AI Matching System',
+      'PDF Generation',
+    ],
+    features: [
+      'Role-based authentication',
+      'Company dashboard',
+      'Student dashboard',
+      'Job and requirement management',
+      'AI CV matching scores',
+      'PDF generation workflows',
+    ],
+    screenshots: ['Dashboard overview', 'AI match score', 'Student CV profile'],
+    github: 'https://github.com/Javedshah11',
+    demo: '#contact',
   },
   {
     title: 'Ecommerce Full Stack Design',
+    role: 'Full Stack Developer',
+    overview:
+      'A modern ecommerce platform concept focused on responsive product browsing and clean shopping flows.',
+    problem:
+      'Small ecommerce brands need fast, mobile-friendly interfaces that make products easy to scan and compare.',
+    solution:
+      'The design uses a React and Tailwind frontend with backend-ready structure for products, categories, and shopping workflows.',
     description:
       'Modern ecommerce platform with responsive design, categories, products, shopping experience, and professional UI.',
     technologies: ['React', 'Tailwind CSS', 'Node.js', 'Express.js', 'MongoDB'],
     highlight: 'Full Stack UI',
     metrics: ['Responsive catalog', 'Product flows', 'Modern shopping UX'],
+    features: [
+      'Responsive product layout',
+      'Category browsing',
+      'Product cards',
+      'Shopping experience UI',
+      'Backend-ready data structure',
+    ],
+    screenshots: ['Home page', 'Product grid', 'Mobile shopping view'],
+    github: 'https://github.com/Javedshah11',
+    demo: '#contact',
+  },
+]
+
+export const skillGroups = [
+  { title: 'Frontend', items: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'] },
+  { title: 'Backend', items: ['Node.js', 'Express.js', 'MongoDB', 'REST APIs', 'JWT Authentication'] },
+  { title: 'Tools', items: ['Git', 'GitHub', 'Vercel'] },
+]
+
+export const services = [
+  'MERN Stack Applications',
+  'Authentication Systems',
+  'Admin Dashboards',
+  'REST APIs',
+  'Responsive Websites',
+  'Portfolio Websites',
+  'Ecommerce Applications',
+]
+
+export const experienceTimeline = [
+  { year: '2022', title: 'Started BS Software Engineering' },
+  { year: '2023', title: 'Completed Web Development & Programming Certifications' },
+  { year: '2024', title: 'Earned Cisco, IBM, Coursera and FreeCodeCamp Certifications' },
+  { year: '2025', title: 'Built MERN Stack Applications' },
+  {
+    year: '2026',
+    title: 'Graduated from Riphah International University and completed OpenHouse Connect Final Year Project',
   },
 ]
 
@@ -99,8 +168,16 @@ export const certifications = [
 
 export const githubStats = [
   { value: '15+', label: 'Repositories & demos' },
-  { value: 'MERN', label: 'Primary GitHub stack' },
+  { value: 'React', label: 'Top frontend language' },
+  { value: 'MERN', label: 'Primary stack' },
   { value: 'AI', label: 'Featured FYP work' },
+]
+
+export const topLanguages = [
+  { name: 'JavaScript', value: 42 },
+  { name: 'React', value: 28 },
+  { name: 'CSS/Tailwind', value: 20 },
+  { name: 'Node.js', value: 10 },
 ]
 
 export const contributionWeeks = [

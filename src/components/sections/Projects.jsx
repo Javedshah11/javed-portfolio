@@ -1,8 +1,12 @@
+import { useState } from 'react'
 import MotionCard from '../MotionCard'
+import ProjectModal from '../ProjectModal'
 import SectionHeading from '../SectionHeading'
 import { projects } from '../../data/portfolio'
 
 export default function Projects() {
+  const [selectedProject, setSelectedProject] = useState(null)
+
   return (
     <section id="projects" className="px-5 py-24 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
@@ -55,11 +59,19 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(project)}
+                  className="mt-7 rounded-full border border-cyan-300/30 px-5 py-3 text-sm font-black text-cyan-100 transition hover:-translate-y-1 hover:border-cyan-200 hover:bg-cyan-300/10"
+                >
+                  View Project Details
+                </button>
               </div>
             </MotionCard>
           ))}
         </div>
       </div>
+      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   )
 }

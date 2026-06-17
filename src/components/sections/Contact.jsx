@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import emailjs from '@emailjs/browser'
 import MotionCard from '../MotionCard'
 import SectionHeading from '../SectionHeading'
 import { profile } from '../../data/portfolio'
@@ -6,13 +7,14 @@ import { profile } from '../../data/portfolio'
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState({ type: '', message: '' })
+  const [isSending, setIsSending] = useState(false)
 
   const updateField = (event) => {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
     setErrors((current) => ({ ...current, [name]: '' }))
-    setSubmitted(false)
+    setStatus({ type: '', message: '' })
   }
 
   const validate = () => {
@@ -33,16 +35,50 @@ export default function Contact() {
     return nextErrors
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     const nextErrors = validate()
     setErrors(nextErrors)
 
     if (Object.keys(nextErrors).length === 0) {
-      setSubmitted(true)
-      window.location.href = `mailto:${profile.email}?subject=Portfolio Contact from ${encodeURIComponent(
-        form.name,
-      )}&body=${encodeURIComponent(`${form.message}\n\nFrom: ${form.name}\nEmail: ${form.email}`)}`
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        setStatus({
+          type: 'error',
+          message:
+            'EmailJS is ready, but VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY need to be added.',
+        })
+        return
+      }
+
+      setIsSending(true)
+      setStatus({ type: '', message: '' })
+
+      try {
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: form.name,
+            from_email: form.email,
+            message: form.message,
+            to_email: profile.email,
+          },
+          { publicKey },
+        )
+        setForm({ name: '', email: '', message: '' })
+        setStatus({ type: 'success', message: 'Message sent successfully. Thank you for reaching out.' })
+      } catch {
+        setStatus({
+          type: 'error',
+          message: 'Message could not be sent. Please try again or email directly.',
+        })
+      } finally {
+        setIsSending(false)
+      }
     }
   }
 
@@ -121,13 +157,20 @@ export default function Contact() {
               </label>
               <button
                 type="submit"
+                disabled={isSending}
                 className="rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-7 py-3 text-sm font-black text-slate-950 shadow-lg shadow-cyan-500/20 transition hover:-translate-y-1 hover:shadow-cyan-500/35"
               >
-                Send Message
+                {isSending ? 'Sending...' : 'Send Message'}
               </button>
-              {submitted ? (
-                <p className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-200">
-                  Looks good. Your email client should open with the message ready.
+              {status.message ? (
+                <p
+                  className={`rounded-2xl border px-4 py-3 text-sm font-semibold ${
+                    status.type === 'success'
+                      ? 'border-emerald-300/20 bg-emerald-300/10 text-emerald-200'
+                      : 'border-rose-300/20 bg-rose-300/10 text-rose-200'
+                  }`}
+                >
+                  {status.message}
                 </p>
               ) : null}
             </form>

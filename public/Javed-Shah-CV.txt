@@ -1,0 +1,29 @@
+Javed Shah
+Software Engineering Graduate | Full Stack Developer
+
+Location: Islamabad, Pakistan
+Originally From: Batkhela, Pakistan
+Email: kingdompeople3@gmail.com
+Phone: 03054541222
+GitHub: https://github.com/Javedshah11
+LinkedIn: https://www.linkedin.com/in/javed-shah-/
+
+Profile
+Software Engineering graduate from Riphah International University and Full Stack
+Web Developer experienced in React.js, Node.js, Express.js, MongoDB, JavaScript,
+Tailwind CSS, REST APIs, JWT authentication, and responsive web design.
+
+Featured Project
+OpenHouse Connect: AI-powered university open house platform built with MERN
+Stack. Matches student CVs with company requirements and generates compatibility
+scores.
+
+Skills
+HTML5, CSS3, JavaScript, React.js, Tailwind CSS, Node.js, Express.js, MongoDB,
+Git & GitHub, REST APIs, JWT Authentication, Responsive Web Design.
+
+Achievements
+BS Software Engineering Graduate (2026)
+FYP Grade A
+AI-Based CV Matching System
+MERN Stack Development

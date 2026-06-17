@@ -60,6 +60,9 @@ export const projects = [
       'Job Management',
       'AI Matching System',
       'PDF Generation',
+      '3 user-focused modules',
+      'CV-to-job compatibility scoring',
+      'Recruiter shortlisting workflow',
     ],
     features: [
       'Role-based authentication',
@@ -114,6 +117,25 @@ export const services = [
   'Responsive Websites',
   'Portfolio Websites',
   'Ecommerce Applications',
+]
+
+export const currentlyLearning = [
+  {
+    title: 'TypeScript',
+    description: 'Improving code reliability with typed React and API contracts.',
+  },
+  {
+    title: 'Docker',
+    description: 'Learning containerized development and deployment workflows.',
+  },
+  {
+    title: 'AWS Basics',
+    description: 'Building cloud deployment awareness for production apps.',
+  },
+  {
+    title: 'Testing',
+    description: 'Practicing component, API, and user-flow testing fundamentals.',
+  },
 ]
 
 export const experienceTimeline = [

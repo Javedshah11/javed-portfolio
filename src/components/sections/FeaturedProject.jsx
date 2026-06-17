@@ -1,8 +1,27 @@
 import { motion } from 'framer-motion'
 import SectionHeading from '../SectionHeading'
 import { projects } from '../../data/portfolio'
+import landingScreenshot from '../../assets/openhouselandingpage.png'
+import signupScreenshot from '../../assets/openhousesignuppage.png'
 
 const openHouse = projects.find((project) => project.title === 'OpenHouse Connect')
+const screenshots = [
+  {
+    title: 'Landing Page',
+    description: 'Public-facing OpenHouse Connect landing page.',
+    image: landingScreenshot,
+  },
+  {
+    title: 'Signup Page',
+    description: 'Account creation flow for platform users.',
+    image: signupScreenshot,
+  },
+  {
+    title: 'AI Matching Dashboard',
+    description: 'Add dashboard or matching screenshot here when available.',
+    image: null,
+  },
+]
 
 export default function FeaturedProject() {
   if (!openHouse) return null
@@ -125,20 +144,28 @@ export default function FeaturedProject() {
               </a>
             </div>
 
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {openHouse.screenshots.map((screenshot, index) => (
+            <div className="mt-6 grid gap-4 lg:grid-cols-3">
+              {screenshots.map((screenshot, index) => (
                 <div
-                  key={screenshot}
-                  className="group grid aspect-video place-items-center overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-cyan-300/10 via-slate-950 to-violet-400/10 p-5 text-center"
+                  key={screenshot.title}
+                  className="group overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70 shadow-xl shadow-black/20 transition hover:-translate-y-1 hover:border-cyan-300/40"
                 >
-                  <div>
-                    <span className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-white/[0.08] text-sm font-black text-cyan-200">
-                      0{index + 1}
-                    </span>
-                    <p className="mt-4 text-sm font-black text-white">{screenshot}</p>
-                    <p className="mt-2 text-xs leading-5 text-slate-400">
-                      Add real screenshot here when available.
-                    </p>
+                  {screenshot.image ? (
+                    <img
+                      src={screenshot.image}
+                      alt={`OpenHouse Connect ${screenshot.title}`}
+                      className="aspect-video w-full object-cover object-top transition duration-500 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <div className="grid aspect-video place-items-center bg-gradient-to-br from-cyan-300/10 via-slate-950 to-violet-400/10 p-5 text-center">
+                      <span className="grid h-12 w-12 place-items-center rounded-2xl bg-white/[0.08] text-sm font-black text-cyan-200">
+                        0{index + 1}
+                      </span>
+                    </div>
+                  )}
+                  <div className="p-4">
+                    <p className="text-sm font-black text-white">{screenshot.title}</p>
+                    <p className="mt-2 text-xs leading-5 text-slate-400">{screenshot.description}</p>
                   </div>
                 </div>
               ))}

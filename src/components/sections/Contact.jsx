@@ -49,7 +49,7 @@ export default function Contact() {
         setStatus({
           type: 'error',
           message:
-            'EmailJS is ready, but VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID, and VITE_EMAILJS_PUBLIC_KEY need to be added.',
+            `EmailJS is ready, but env keys need to be added. You can email directly at ${profile.email}.`,
         })
         return
       }
@@ -107,6 +107,15 @@ export default function Contact() {
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="hover:text-cyan-200">
                 LinkedIn: javed-shah-
               </a>
+            </div>
+            <div className="mt-8 rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-4">
+              <p className="text-sm font-bold leading-6 text-cyan-100">
+                If the contact form is not configured yet, email directly at{' '}
+                <a href={`mailto:${profile.email}`} className="underline decoration-cyan-300/60 underline-offset-4">
+                  {profile.email}
+                </a>
+                .
+              </p>
             </div>
           </MotionCard>
 

@@ -11,6 +11,7 @@ import Achievements from './components/sections/Achievements'
 import AiFeature from './components/sections/AiFeature'
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
+import CurrentlyLearning from './components/sections/CurrentlyLearning'
 import Education from './components/sections/Education'
 import ExperienceTimeline from './components/sections/ExperienceTimeline'
 import FeaturedProject from './components/sections/FeaturedProject'
@@ -37,6 +38,7 @@ function App() {
       <Hero />
       <About />
       <Skills />
+      <CurrentlyLearning />
       <Services />
       <Projects />
       <AiFeature />

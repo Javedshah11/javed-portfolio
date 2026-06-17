@@ -9,11 +9,11 @@ import Navbar from './components/layout/Navbar'
 import About from './components/sections/About'
 import Achievements from './components/sections/Achievements'
 import AiFeature from './components/sections/AiFeature'
-import AiResumeAnalyzer from './components/sections/AiResumeAnalyzer'
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
 import Education from './components/sections/Education'
 import ExperienceTimeline from './components/sections/ExperienceTimeline'
+import FeaturedProject from './components/sections/FeaturedProject'
 import GithubStats from './components/sections/GithubStats'
 import HireMe from './components/sections/HireMe'
 import Hero from './components/sections/Hero'
@@ -40,7 +40,7 @@ function App() {
       <Services />
       <Projects />
       <AiFeature />
-      <AiResumeAnalyzer />
+      <FeaturedProject />
       <ExperienceTimeline />
       <Education />
       <Achievements />

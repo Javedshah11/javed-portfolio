@@ -1,16 +1,70 @@
-# React + Vite
+# Javed Shah Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite + Tailwind CSS portfolio with Framer Motion, PDF CV generation,
+EmailJS contact support, and a Python-powered AI Resume Analyzer.
 
-Currently, two official plugins are available:
+## Frontend Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+Run the FastAPI analyzer in a second terminal:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run backend:install
+npm run backend:dev
+```
 
-## Expanding the ESLint configuration
+Optional `.env` values:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+VITE_RESUME_ANALYZER_API_URL=http://localhost:8000
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_emailjs_public_key
+```
+
+Deploy the frontend to Vercel. In Vercel, set `VITE_RESUME_ANALYZER_API_URL`
+to your Render backend URL.
+
+## AI Resume Analyzer Backend
+
+```bash
+cd backend
+python -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Backend endpoint:
+
+```text
+POST http://localhost:8000/analyze-resume
+```
+
+Send a PDF file as multipart form data using the key `file`.
+
+## Render Backend Deployment
+
+Create a Render Web Service with `backend` as the root directory.
+
+Build command:
+
+```bash
+pip install -r requirements.txt
+```
+
+Start command:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+Environment variable:
+
+```bash
+ALLOWED_ORIGINS=https://your-vercel-domain.vercel.app,http://localhost:5173
+```

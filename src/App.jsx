@@ -9,6 +9,7 @@ import Navbar from './components/layout/Navbar'
 import About from './components/sections/About'
 import Achievements from './components/sections/Achievements'
 import AiFeature from './components/sections/AiFeature'
+import AiResumeAnalyzer from './components/sections/AiResumeAnalyzer'
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
 import Education from './components/sections/Education'
@@ -39,6 +40,7 @@ function App() {
       <Services />
       <Projects />
       <AiFeature />
+      <AiResumeAnalyzer />
       <ExperienceTimeline />
       <Education />
       <Achievements />

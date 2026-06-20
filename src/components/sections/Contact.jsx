@@ -10,6 +10,15 @@ export default function Contact() {
   const [status, setStatus] = useState({ type: '', message: '' })
   const [isSending, setIsSending] = useState(false)
 
+  const openEmailDraft = () => {
+    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name.trim()}`)
+    const body = encodeURIComponent(
+      `Name: ${form.name.trim()}\nEmail: ${form.email.trim()}\n\nMessage:\n${form.message.trim()}`,
+    )
+
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
+  }
+
   const updateField = (event) => {
     const { name, value } = event.target
     setForm((current) => ({ ...current, [name]: value }))
@@ -46,10 +55,11 @@ export default function Contact() {
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
       if (!serviceId || !templateId || !publicKey) {
+        openEmailDraft()
         setStatus({
-          type: 'error',
+          type: 'info',
           message:
-            `EmailJS is ready, but env keys need to be added. You can email directly at ${profile.email}.`,
+            'Your email app has been opened with this message ready to send.',
         })
         return
       }
@@ -72,9 +82,10 @@ export default function Contact() {
         setForm({ name: '', email: '', message: '' })
         setStatus({ type: 'success', message: 'Message sent successfully. Thank you for reaching out.' })
       } catch {
+        openEmailDraft()
         setStatus({
-          type: 'error',
-          message: 'Message could not be sent. Please try again or email directly.',
+          type: 'info',
+          message: 'The form could not send automatically, so an email draft was opened instead.',
         })
       } finally {
         setIsSending(false)
@@ -176,7 +187,9 @@ export default function Contact() {
                   className={`rounded-2xl border px-4 py-3 text-sm font-semibold ${
                     status.type === 'success'
                       ? 'border-emerald-300/20 bg-emerald-300/10 text-emerald-200'
-                      : 'border-rose-300/20 bg-rose-300/10 text-rose-200'
+                      : status.type === 'info'
+                        ? 'border-cyan-300/20 bg-cyan-300/10 text-cyan-100'
+                        : 'border-rose-300/20 bg-rose-300/10 text-rose-200'
                   }`}
                 >
                   {status.message}

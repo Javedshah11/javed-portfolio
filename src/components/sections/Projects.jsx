@@ -41,7 +41,7 @@ export default function Projects() {
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_80%_10%,rgba(168,85,247,0.22),transparent_28%),linear-gradient(135deg,rgba(15,23,42,0.9),rgba(2,6,23,0.95))]" />
                   {project.previewImages?.length ? (
                     <div className="relative grid w-[86%] gap-4 sm:grid-cols-2">
-                      {project.previewImages.map((image, imageIndex) => (
+                      {project.previewImages.slice(0, 2).map((image, imageIndex) => (
                         <div
                           key={image}
                           className={imageIndex === 1 ? 'translate-y-4 sm:translate-y-8' : ''}

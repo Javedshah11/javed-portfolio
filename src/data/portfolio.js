@@ -1,4 +1,5 @@
 import acceptedCandidatesImage from '../assets/openhouse acceptedfyp canditates.png'
+import assignVolunteerImage from '../assets/assign volunter in open house.png'
 import skillMatchingImage from '../assets/studentskill matching company requrments.png'
 
 export const profile = {
@@ -56,7 +57,7 @@ export const projects = [
     technologies: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind CSS'],
     highlight: 'AI CV Matching',
     imageLabel: 'OpenHouse dashboard screenshots',
-    previewImages: [acceptedCandidatesImage, skillMatchingImage],
+    previewImages: [acceptedCandidatesImage, skillMatchingImage, assignVolunteerImage],
     cardMetrics: [
       'AI CV matching system',
       'Company and student dashboards',

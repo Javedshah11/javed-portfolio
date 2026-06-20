@@ -3,6 +3,7 @@ import SectionHeading from '../SectionHeading'
 import { projects } from '../../data/portfolio'
 import landingScreenshot from '../../assets/openhouselandingpage.png'
 import signupScreenshot from '../../assets/openhousesignuppage.png'
+import assignVolunteerScreenshot from '../../assets/assign volunter in open house.png'
 import matchingScreenshot from '../../assets/studentskill matching company requrments.png'
 
 const openHouse = projects.find((project) => project.title === 'OpenHouse Connect')
@@ -21,6 +22,11 @@ const screenshots = [
     title: 'AI Matching Dashboard',
     description: 'Student skills matched against company requirements.',
     image: matchingScreenshot,
+  },
+  {
+    title: 'Volunteer Assignment',
+    description: 'Admin workflow for assigning volunteers to open house events.',
+    image: assignVolunteerScreenshot,
   },
 ]
 
@@ -145,7 +151,7 @@ export default function FeaturedProject() {
               </a>
             </div>
 
-            <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {screenshots.map((screenshot, index) => (
                 <div
                   key={screenshot.title}

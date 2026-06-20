@@ -1,3 +1,6 @@
+import acceptedCandidatesImage from '../assets/openhouse acceptedfyp canditates.png'
+import skillMatchingImage from '../assets/studentskill matching company requrments.png'
+
 export const profile = {
   name: 'Javed Shah',
   title: 'Software Engineering Graduate | Full Stack Developer',
@@ -52,6 +55,8 @@ export const projects = [
       'AI-powered university open house platform built with MERN Stack. Matches student CVs with company requirements and generates compatibility scores.',
     technologies: ['React', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind CSS'],
     highlight: 'AI CV Matching',
+    imageLabel: 'OpenHouse dashboard screenshots',
+    previewImages: [acceptedCandidatesImage, skillMatchingImage],
     metrics: [
       'Role: Full Stack Developer',
       'Authentication System',

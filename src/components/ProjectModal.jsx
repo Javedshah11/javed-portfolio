@@ -52,16 +52,30 @@ export default function ProjectModal({ project, onClose }) {
 
                 <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
                   <h3 className="text-lg font-black text-white">Screenshots Gallery</h3>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-3">
-                    {project.screenshots.map((screenshot) => (
-                      <div
-                        key={screenshot}
-                        className="grid aspect-video place-items-center rounded-2xl border border-cyan-300/20 bg-gradient-to-br from-cyan-300/10 to-violet-400/10 p-4 text-center text-sm font-bold text-slate-300"
-                      >
-                        {screenshot}
-                      </div>
-                    ))}
-                  </div>
+                  {project.previewImages?.length ? (
+                    <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                      {project.previewImages.map((image, index) => (
+                        <img
+                          key={image}
+                          src={image}
+                          alt={`${project.title} screenshot ${index + 1}`}
+                          className="aspect-video w-full rounded-2xl border border-cyan-300/20 object-cover"
+                          loading="lazy"
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                      {project.screenshots.map((screenshot) => (
+                        <div
+                          key={screenshot}
+                          className="grid aspect-video place-items-center rounded-2xl border border-cyan-300/20 bg-gradient-to-br from-cyan-300/10 to-violet-400/10 p-4 text-center text-sm font-bold text-slate-300"
+                        >
+                          {screenshot}
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </section>
 
                 <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">

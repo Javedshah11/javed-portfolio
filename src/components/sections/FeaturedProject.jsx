@@ -3,6 +3,7 @@ import SectionHeading from '../SectionHeading'
 import { projects } from '../../data/portfolio'
 import landingScreenshot from '../../assets/openhouselandingpage.png'
 import signupScreenshot from '../../assets/openhousesignuppage.png'
+import matchingScreenshot from '../../assets/studentskill matching company requrments.png'
 
 const openHouse = projects.find((project) => project.title === 'OpenHouse Connect')
 const screenshots = [
@@ -18,8 +19,8 @@ const screenshots = [
   },
   {
     title: 'AI Matching Dashboard',
-    description: 'Add dashboard or matching screenshot here when available.',
-    image: null,
+    description: 'Student skills matched against company requirements.',
+    image: matchingScreenshot,
   },
 ]
 

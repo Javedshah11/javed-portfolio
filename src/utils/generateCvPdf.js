@@ -1,53 +1,37 @@
-const cv = {
-  name: 'Javed Shah',
-  title: 'Software Engineering Graduate | Full Stack Developer',
-  location: 'Islamabad, Pakistan',
-  origin: 'Batkhela, Pakistan',
-  email: 'kingdompeople3@gmail.com',
-  phone: '03054541222',
-  github: 'https://github.com/Javedshah11',
-  linkedin: 'https://www.linkedin.com/in/javed-shah-/',
+import { achievements, certifications, education, profile, projects, skills } from '../data/portfolio'
+
+const cvExtras = {
   summary:
     'Software Engineering graduate from Riphah International University and passionate Full Stack Web Developer with experience in building modern, responsive, and scalable web applications using React.js, Node.js, Express.js, MongoDB, JavaScript, and Tailwind CSS.',
-  skills:
-    'HTML5, CSS3, JavaScript, React.js, Tailwind CSS, Node.js, Express.js, MongoDB, Git, GitHub, REST APIs, JWT Authentication, Responsive Web Design',
   education: {
-    degree: 'BS Software Engineering',
-    institute: 'Riphah International University',
-    graduated: '2026',
     cgpa: '2.83 / 4.00',
   },
-  projects: [
-    {
-      title: 'OpenHouse Connect',
-      description:
-        'AI-powered university open house platform built with MERN Stack. Matches student CVs with company requirements and generates compatibility scores.',
-      tech: 'React, Node.js, Express.js, MongoDB, JWT, Tailwind CSS',
+}
+
+function buildCvData() {
+  const primaryEducation = education[0]
+
+  return {
+    ...profile,
+    summary: cvExtras.summary,
+    skills: skills.map((skill) => skill.name).join(', '),
+    education: {
+      degree: primaryEducation.title,
+      institute: primaryEducation.institute,
+      graduated: primaryEducation.year.split(' - ').at(-1),
+      cgpa: cvExtras.education.cgpa,
     },
-    {
-      title: 'Ecommerce Full Stack Design',
-      description:
-        'Modern ecommerce platform with responsive design, categories, products, shopping experience, and professional UI.',
-      tech: 'React, Tailwind CSS, Node.js, Express.js, MongoDB',
-    },
-  ],
-  achievements: [
-    'BS Software Engineering Graduate 2026',
-    'FYP Grade A',
-    'Developed AI-Based CV Matching System',
-    'MERN Stack Development Experience',
-  ],
-  certifications: [
-    'Responsive Web Design',
-    'JavaScript Essentials 1',
-    'JavaScript Essentials 2',
-    'Python Essentials 1',
-    'Introduction to Software Engineering',
-    'MongoDB Certifications',
-    'SQL Certifications',
-    'Command Line in Linux',
-    'C++ Basics',
-  ],
+    projects: projects.map((project) => ({
+      title: project.title,
+      description: project.description,
+      tech: project.technologies.join(', '),
+    })),
+    achievements: achievements.map((achievement) => {
+      const value = achievement.display || `${achievement.value}${achievement.suffix || ''}`
+      return `${value} - ${achievement.label}`
+    }),
+    certifications,
+  }
 }
 
 const page = {
@@ -92,6 +76,7 @@ function bulletList(doc, items, x, y, width, lineHeight = 4.4) {
 
 export async function generateCvPdf() {
   const { jsPDF } = await import('jspdf')
+  const cv = buildCvData()
   const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' })
   const leftX = page.margin
   const rightX = 132

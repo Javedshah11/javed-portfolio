@@ -57,6 +57,12 @@ export const projects = [
     highlight: 'AI CV Matching',
     imageLabel: 'OpenHouse dashboard screenshots',
     previewImages: [acceptedCandidatesImage, skillMatchingImage],
+    cardMetrics: [
+      'AI CV matching system',
+      'Company and student dashboards',
+      'Role-based authentication',
+      'Recruiter shortlisting workflow',
+    ],
     metrics: [
       'Role: Full Stack Developer',
       'Authentication System',
@@ -105,6 +111,12 @@ export const projects = [
     ],
     highlight: 'MERN Ecommerce',
     imageLabel: 'Ecommerce storefront preview',
+    cardMetrics: [
+      'Dynamic product catalog',
+      'JWT authentication',
+      'Cart and checkout flow',
+      'Admin product CRUD',
+    ],
     metrics: [
       'Dynamic product catalog',
       'JWT authentication',

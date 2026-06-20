@@ -20,7 +20,7 @@ export default function Projects() {
             <MotionCard
               key={project.title}
               delay={index * 0.08}
-              className="group flex min-h-[560px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-0 transition hover:-translate-y-2 hover:border-violet-300/50 hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-violet-950/30"
+              className="group flex h-full flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.05] p-0 transition hover:-translate-y-2 hover:border-violet-300/50 hover:bg-white/[0.08] hover:shadow-2xl hover:shadow-violet-950/30"
             >
               <div className="h-2 bg-gradient-to-r from-cyan-300 via-violet-400 to-fuchsia-400" />
               <div className="flex flex-1 flex-col p-6">
@@ -35,7 +35,7 @@ export default function Projects() {
                 <h3 className="mt-6 text-2xl font-black text-white sm:text-3xl">
                   {project.title}
                 </h3>
-                <p className="mt-4 leading-8 text-slate-300">{project.description}</p>
+                <p className="mt-4 min-h-24 leading-8 text-slate-300">{project.description}</p>
 
                 <div className="relative mt-6 grid min-h-64 place-items-center overflow-hidden rounded-3xl border border-cyan-300/20 bg-slate-950">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.24),transparent_30%),radial-gradient(circle_at_80%_10%,rgba(168,85,247,0.22),transparent_28%),linear-gradient(135deg,rgba(15,23,42,0.9),rgba(2,6,23,0.95))]" />
@@ -86,7 +86,7 @@ export default function Projects() {
                 </div>
 
                 <div className="mt-6 grid gap-2">
-                  {project.metrics.map((metric) => (
+                  {(project.cardMetrics || project.metrics).map((metric) => (
                     <div
                       key={metric}
                       className="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-950/55 px-4 py-3"
@@ -107,7 +107,7 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-                <div className="mt-7 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-auto grid gap-3 pt-7 sm:grid-cols-2 xl:grid-cols-3">
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}

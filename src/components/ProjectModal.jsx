@@ -63,9 +63,28 @@ export default function ProjectModal({ project, onClose }) {
                     ))}
                   </div>
                 </section>
+
+                <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                  <h3 className="text-lg font-black text-white">Work Completed</h3>
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    {(project.workCompleted || project.metrics).map((item) => (
+                      <p
+                        key={item}
+                        className="rounded-xl border border-white/10 bg-slate-900 px-3 py-2 text-sm font-semibold text-slate-200"
+                      >
+                        {item}
+                      </p>
+                    ))}
+                  </div>
+                </section>
               </div>
 
               <aside className="grid content-start gap-5">
+                <section className="rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-5">
+                  <h3 className="text-lg font-black text-white">My Role</h3>
+                  <p className="mt-3 text-sm font-semibold text-cyan-100">{project.role}</p>
+                </section>
+
                 <section className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
                   <h3 className="text-lg font-black text-white">Features</h3>
                   <div className="mt-4 grid gap-2">

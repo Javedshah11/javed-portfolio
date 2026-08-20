@@ -1,60 +1,22 @@
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import './styles/design-system.css'
 import './App.css'
-import AnimatedBackground from './components/AnimatedBackground'
-import BackToTop from './components/BackToTop'
-import LoadingScreen from './components/LoadingScreen'
-import ScrollProgress from './components/ScrollProgress'
-import Footer from './components/layout/Footer'
+import './styles/refinements.css'
+import './styles/credentials.css'
 import Navbar from './components/layout/Navbar'
-import About from './components/sections/About'
-import Achievements from './components/sections/Achievements'
-import AiFeature from './components/sections/AiFeature'
-import Certifications from './components/sections/Certifications'
-import Contact from './components/sections/Contact'
-import CurrentlyLearning from './components/sections/CurrentlyLearning'
-import Education from './components/sections/Education'
-import ExperienceTimeline from './components/sections/ExperienceTimeline'
-import FeaturedProject from './components/sections/FeaturedProject'
-import GithubStats from './components/sections/GithubStats'
-import HireMe from './components/sections/HireMe'
 import Hero from './components/sections/Hero'
-import Projects from './components/sections/Projects'
-import Resume from './components/sections/Resume'
-import Services from './components/sections/Services'
-import Skills from './components/sections/Skills'
+import PortfolioSections from './components/sections/PortfolioSections'
+import Cursor from './components/Cursor'
+import CommandPalette from './components/CommandPalette'
+import ScrollProgress from './components/ScrollProgress'
+import LoadingScreen from './components/LoadingScreen'
 
-function App() {
-  return (
-    <motion.main
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.45 }}
-      className="relative min-h-screen overflow-x-hidden bg-slate-950 text-slate-100"
-    >
-      <AnimatedBackground />
-      <ScrollProgress />
-      <LoadingScreen />
-      <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <CurrentlyLearning />
-      <Services />
-      <Projects />
-      <AiFeature />
-      <FeaturedProject />
-      <ExperienceTimeline />
-      <Education />
-      <Achievements />
-      <Certifications />
-      <GithubStats />
-      <Resume />
-      <HireMe />
-      <Contact />
-      <Footer />
-      <BackToTop />
-    </motion.main>
-  )
+export default function App() {
+  const [paletteOpen, setPaletteOpen] = useState(false)
+  useEffect(() => {
+    const onKey = (event) => { if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); setPaletteOpen((value) => !value) } }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
+  return <main><a className="skip-link" href="#main-content">Skip to content</a><LoadingScreen/><ScrollProgress/><Cursor/><Navbar onCommand={() => setPaletteOpen(true)}/><Hero/><PortfolioSections/><CommandPalette open={paletteOpen} onClose={() => setPaletteOpen(false)}/></main>
 }
-
-export default App

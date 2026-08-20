@@ -1,0 +1,21 @@
+:root {
+  --color-bg: #020508;
+  --color-bg-secondary: #04080d;
+  --color-surface: #071018;
+  --color-green: #6eff3d;
+  --color-cyan: #00e5ff;
+  --color-blue: #168bff;
+  --color-text: #f5f7fa;
+  --color-muted: #97a3b3;
+  --color-border: rgba(255, 255, 255, 0.07);
+  --gradient-accent: linear-gradient(90deg, var(--color-green), var(--color-cyan), var(--color-blue));
+  --container: 1180px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --space-section: clamp(5.5rem, 10vw, 8.75rem);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-fast: 180ms var(--ease-out);
+  --transition-card: 320ms var(--ease-out);
+}

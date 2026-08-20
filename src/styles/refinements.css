@@ -1,0 +1,56 @@
+.hero-role {
+  margin: 24px 0 0;
+  color: var(--color-text);
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-statement {
+  max-width: 650px;
+}
+
+.phrase-wrap {
+  display: block;
+  min-height: 1.3em;
+  margin-top: 8px;
+  overflow: hidden;
+}
+
+.phrase-wrap b {
+  display: block;
+  background: var(--gradient-accent);
+  background-clip: text;
+  color: transparent;
+}
+
+.button:active,
+.project-card:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.palette > a.selected {
+  background: rgba(110, 255, 61, 0.08);
+  color: var(--color-green);
+}
+
+.menu-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+@media (max-width: 520px) {
+  .hero-role { line-height: 1.6; }
+  .phrase-wrap { min-height: 2.6em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit,
+  .connector i,
+  .terminal code span { animation: none; }
+  .terminal code span { opacity: 1; }
+  .project-card:hover,
+  .flow-step article:hover,
+  .button:hover { transform: none; }
+}

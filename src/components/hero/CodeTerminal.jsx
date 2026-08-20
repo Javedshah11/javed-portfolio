@@ -1,0 +1,2 @@
+const lines=['const developer = {','  name: "Javed Shah",','  role: "Software Engineer",','  stack: ["React", "Node.js", "MongoDB"],','  focus: ["APIs", "Auth", "Responsive UI"]','};','','buildProduct(idea) → impact;']
+export default function CodeTerminal(){return <div className="terminal" aria-label="Developer profile code sample"><div className="terminal-bar" aria-hidden="true"><span/><span/><span/><b>javed@portfolio ~</b></div><code>{lines.map((line,index)=><span key={`${line}-${index}`} style={{'--delay':`${1+index*.18}s`}}>{line || '\u00a0'}</span>)}</code></div>}

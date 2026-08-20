@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Reveal from "../Reveal";
 import {
   featuredProjects,
@@ -28,7 +29,7 @@ const architecture = [
 ];
 const SectionTitle = ({ index, eyebrow, title, copy }) => (
   <Reveal className="section-title">
-    <div className="section-index">{index}</div>
+    <div className="section-index"><span>{index}</span><i aria-hidden="true" /></div>
     <div>
       <p className="eyebrow">{eyebrow}</p>
       <h2>{title}</h2>
@@ -47,11 +48,12 @@ function ProjectVisual({ project }) {
           <i />
           <span>openhouse.connect / dashboard</span>
         </div>
-        <img src={project.images[0]} alt={`${project.title} dashboard`} />
+        <img src={project.images[0]} alt={`${project.title} dashboard`} loading="lazy" />
         <img
           className="floating-shot"
           src={project.images[1]}
           alt={`${project.title} matching interface`}
+          loading="lazy"
         />
       </div>
     );
@@ -119,6 +121,17 @@ function Architecture() {
 }
 
 export default function PortfolioSections() {
+  const [activeSkill, setActiveSkill] = useState("React");
+  const skillProjectMap = {
+    React: "OpenHouse Connect · Ecommerce Fullstack",
+    JavaScript: "All featured projects",
+    "Node.js": "OpenHouse Connect · Ecommerce Fullstack",
+    "Express.js": "OpenHouse Connect · Ecommerce Fullstack",
+    MongoDB: "OpenHouse Connect · Ecommerce Fullstack",
+    "JWT Authentication": "OpenHouse Connect · Ecommerce Fullstack",
+    "Responsive Design": "Portfolio · Ecommerce Fullstack",
+    "Product Thinking": "OpenHouse Connect · Portfolio",
+  };
   return (
     <div id="main-content">
       <section id="about" className="section about">
@@ -137,7 +150,7 @@ export default function PortfolioSections() {
           />
           <div className="about-grid">
             <Reveal className="portrait-card">
-              <img src={portrait} alt="Portrait of Javed Shah" />
+              <img src={portrait} alt="Portrait of Javed Shah" loading="lazy" width="1040" height="1300" />
               <div>
                 <span>Based in</span>
                 <b>{profile.location}</b>
@@ -305,11 +318,22 @@ export default function PortfolioSections() {
                 <h3>{group.title}</h3>
                 <div>
                   {group.items.map((item) => (
-                    <span key={item}>{item}</span>
+                    <button
+                      type="button"
+                      className={activeSkill === item ? "active" : ""}
+                      aria-pressed={activeSkill === item}
+                      onClick={() => setActiveSkill(item)}
+                      key={item}
+                    >{item}</button>
                   ))}
                 </div>
               </Reveal>
             ))}
+            <div className="skill-context" aria-live="polite">
+              <span>ACTIVE RELATION</span>
+              <b>{activeSkill}</b>
+              <p>{skillProjectMap[activeSkill] || "Applied across the engineering workflow"}</p>
+            </div>
           </div>
         </div>
       </section>
